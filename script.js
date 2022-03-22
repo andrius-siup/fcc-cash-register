@@ -18,7 +18,13 @@ function checkCashRegister(price, cash, cid) {
   console.log(available);
   // if the money in the cid is not enough, return 
   // {status: "INSUFFICIENT_FUNDS", change: []}
-  
+
+  // if the money in the cid is equal to the change due, return
+  // {status: "CLOSED", change: [...]}
+  if (available === changeDueCents) {
+    return {status: "CLOSED", change: cid};
+  }
+
   let change;
   return change;
 }
@@ -35,5 +41,7 @@ function checkCashRegister(price, cash, cid) {
 //   ["ONE HUNDRED", 100],
 // ]));
 
-console.log(checkCashRegister(19.5, 20, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]));
+// console.log(checkCashRegister(19.5, 20, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]));
+
+console.log(checkCashRegister(19.5, 20, [["PENNY", 0.5], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]));
 
