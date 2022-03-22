@@ -7,7 +7,7 @@ function checkCashRegister(price, cash, cid) {
   // sum up all the money in the cash drawer
   const available = cid.reduce((acc, billType) => {
     //console.log(billType);
-    return acc + billType[1];
+    return acc + billType[1] * 100;  // return in cents
   }, 0);
   console.log(available);
   // if the money in the cid is not enough, return 
